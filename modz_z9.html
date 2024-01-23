@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <style>
+        table, tr, th{
+            border: 1px solid black ;
+            border-collapse: collapse;
+        }
+        body {
+            background-color: rgb(247, 255, 255);
+            color:rgb(20, 20, 20);
+        }
+    </style>
+    
+</head>
+<body>
+<ol type="1">
+<h1><li>Składnia teoretyczna otoczony ramką (może być tabela jedno komórkowa, konieczne wcięcia)</li></h1>
+<table>
+    <tr><!--   1   -->
+        <td>Selektor uniwersalny</td>
+        <td>* { cecha: wartość }</td>
+    </tr>
+
+    <tr><!--   2   -->
+        <td>Zewnętrzny arkusz stylów</td>
+        <td><textarea cols="70" rows="6" readonly>
+<head>  
+(...)  
+<link rel="Stylesheet" type="text/css" href="style.css" />  
+(...) 
+</head>
+        </textarea></td>
+    </tr>
+    <tr><!--   3   -->
+        <td>sposób podłączania styli do strony</td>
+        <td><textarea cols="70" rows="4" readonly>
+<selektor style="cecha1: wartość1; cecha2: wartość2...">...</selektor>
+lub
+<selektor style="nasze style">treść bloku</selektor>
+        </textarea></td>
+    </tr>
+    <tr><!--   4   -->
+        <td>Wewnętrzny arkusz stylów</td>
+        <td><textarea cols="70" rows="10" readonly>
+<head> 
+(...)
+<style type="text/css"> /* <![CDATA[ */ 
+selektor1 { cecha: wartość; cecha2: wartość2... } 
+selektor2 { cecha: wartość; cecha2: wartość2... } 
+(...)/* ]]> */
+</style> 
+(...) 
+</head>
+</textarea></td>
+    </tr>
+    <tr><!--   5   -->
+        <td>sposób podłączania styli do strony</td>
+        <td><textarea cols="70" rows="6" readonly>
+<style type="text/css"> 
+/* <![CDATA[ */   
+@import url(adres zewnętrznego arkusza stylów); 
+/* ]]> */ 
+</style>
+        </textarea></td>
+    </tr>
+
+</table>
+
+
+<h1><li>Gdzie wstawiany jest  styl zewnętrzny, jaki znacznik jest za to odpowiedzialny oraz ile razy może on występować w dokumencie, jako podłączenie stylu CSS?</li></h1>
+<textarea cols="70" rows="3" readonly>
+Zazwyczaj w pliku index.html, pod titel w head
+<link rel="stylesheet" type="text/css" href="style">
+nieskończoność
+</textarea>
+
+<h1><li>Jak jest najprostsza forma wstawiania stylu zewnętrznego otoczony ramką, może być tabela jedno komórkowa</li></h1>
+<h2>Import arkusza stylów</h2><br>
+<table>
+    <tr>
+        <td>
+        <textarea cols="70" rows="4" readonly>
+        <style type="text/css">
+        @import url(adres zewnętrznego arkusza stylów);
+        </style>
+        </textarea>
+        </td>
+    </tr>
+</table>
+
+
+<h1><li>Ile arkuszy styli może być dołączanych do jednego dokumentu HTML oraz jaka zasad musi być zachowana przy większej ilości dołączanych styli?</li></h1>
+Do jednego dokumentu może być przypisanych wiele arkuszy stylów, Kaskadowość stylów.
+
+
+<h1><li>Co się dzieje w przypadku konfliktów? Przez konflikt rozumiemy, gdy te same style są definiowane w różnych arkuszach styli podłączone do tego samego arkusza.</li></h1>
+W przypadku konfliktów system będzie brał ważniejaszą wartość.
+
+
+<h1><li>Jak są tworzone i edytowane pliki arkuszy z użyciem edytora tekstowego?</li></h1>
+Aby stworzyć nowy plik trzeba stworzyć plik, mieć w nim szkielet strony i zapisać jako html,<br>
+chyba że chcemy aby to był plik css to wtedy może być bez żadnej treść i możemy zapisać go jako plik css.<br><br>
+
+
+<h1><li>Jak są tworzone i edytowane pliki arkuszy z użyciem specjalnego edytora CSS?</li></h1>
+
+
+
+<h1><li>Jakie rozszerzenie posiadają plik będący zewnętrznym arkuszem styli?</li></h1>
+*.css<br>
+
+<h1><li>Jakie są zalety zewnętrznego arkusza styli, dwie z użyciem wyliczenia?</li></h1>
+<ol>
+    <li>wszystkie nasze strony w obrębie całego serwisu mogą mieć pewne wspólne cechy. </li>
+    <li>jeśli w ostatniej chwili zdecydujemy się zmienić np. rodzaj czcionki na wszystkich
+        stronach, możemy to zrobić, modyfikując jedynie zewnętrzny arkusz stylów, bez
+        konieczności zmiany każdej strony osobno.</li>
+</ol>
+
+
+<h1><li>Uwagi na temat pisania w CSS</li></h1>
+<ol type="1">
+    <li>Język CSS dopuszcza stosowanie zarówno dużych, jak i małych liter.
+        Poprawnymi nazwami atrybutu są background, backGROUND oraz BACKground</li>
+    <li>Wstawienie białych znaków (spacje, tabulacje, znaki nowej linii) w arkuszu CSS nie ma
+        wpływu na jego działanie</li>
+    <li>Dlatego możesz ułożyć wpisywane reguły CSS w taki sposób, aby były bardziej czytelne np.
+        <table>
+            <tr>
+                <td>h1 {
+                    font-weight : bold;
+                    }
+                   </td>
+                <td>możemy zapisać</td>
+                <td>h1{font-weight:bold;}</td>
+            </tr>
+        </table>
+    </li>
+    <li>Komentarze w arkuszu stylów
+        pisze się używając znaków: /* (otworzenie komentarza) oraz */ (zamknięcie komentarza),
+        np.: /*to jest komentarz*/.
+        Wszystko pomiędzy tymi znakami jest ignorowane przez przeglądarkę. </li>
+    <li>Część poleceń stylów CSS nie sa interpretowane przez niektóre przeglądarki internetowe lub
+        jest obsługiwana odmiennie. Dlatego zawsze należy sprawdzać efekty w praktyce - jeśli to
+        możliwe, to najlepiej w kilku najbardziej popularnych przeglądarkach: Microsoft Internet
+        Explorer, Netscape/Mozilla/Firefox (czyli przeglądarki oparte na silniku Gecko), Opera. </li>
+</ol>
+
+
+</ol>
+</body>
+</html>
